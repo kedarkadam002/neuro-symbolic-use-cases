@@ -1,0 +1,27 @@
+kind = "web"
+previewPath = "/"
+title = "Neuro-Symbolic AI Use Cases"
+version = "1.0.0"
+id = "artifacts/neuro-symbolic-use-cases"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 23905
+
+[services.development]
+run = "pnpm --filter @workspace/neuro-symbolic-use-cases run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/neuro-symbolic-use-cases", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/neuro-symbolic-use-cases/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "23905"
+BASE_PATH = "/"

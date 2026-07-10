@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-card-border: hsl(var(--card-border));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-popover-border: hsl(var(--popover-border));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --font-sans: var(--app-font-sans);
+  --font-mono: var(--app-font-mono);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --background: 226 43% 5%; /* #080b14 */
+  --foreground: 210 40% 98%;
+  --card: 222 36% 9%; /* #0f1420 */
+  --card-foreground: 210 40% 98%;
+  --card-border: 215 28% 17%;
+  --border: 215 28% 17%; /* #1f2937 */
+  --input: 215 28% 17%;
+  --ring: 217 91% 60%;
+  --primary: 217 91% 60%; /* #3b82f6 */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 215 28% 17%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 222 36% 9%;
+  --muted-foreground: 215 20% 65%;
+  --accent: 217 91% 60%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 348 83% 55%;
+  --destructive-foreground: 0 0% 100%;
+  --popover: 222 36% 9%;
+  --popover-foreground: 210 40% 98%;
+  --popover-border: 215 28% 17%;
+
+  --app-font-sans: 'Plus Jakarta Sans', sans-serif;
+  --app-font-mono: 'Space Mono', monospace;
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: 226 43% 5%; 
+  --foreground: 210 40% 98%;
+  --card: 222 36% 9%; 
+  --card-foreground: 210 40% 98%;
+  --card-border: 215 28% 17%;
+  --border: 215 28% 17%; 
+  --input: 215 28% 17%;
+  --ring: 217 91% 60%;
+  --primary: 217 91% 60%; 
+  --primary-foreground: 0 0% 100%;
+  --secondary: 215 28% 17%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 222 36% 9%;
+  --muted-foreground: 215 20% 65%;
+  --accent: 217 91% 60%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 348 83% 55%;
+  --destructive-foreground: 0 0% 100%;
+  --popover: 222 36% 9%;
+  --popover-foreground: 210 40% 98%;
+  --popover-border: 215 28% 17%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .noise-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.02;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+
+  .glass-panel {
+    @apply bg-background/80 backdrop-blur-md border-b border-border/50;
+  }
+
+  .gradient-border-leader {
+    position: relative;
+  }
+  .gradient-border-leader::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; bottom: 0; width: 4px;
+    background: linear-gradient(to bottom, #ef4444, #991b1b);
+    border-top-left-radius: inherit;
+    border-bottom-left-radius: inherit;
+  }
+
+  .gradient-border-operator {
+    position: relative;
+  }
+  .gradient-border-operator::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; bottom: 0; width: 4px;
+    background: linear-gradient(to bottom, #f59e0b, #b45309);
+    border-top-left-radius: inherit;
+    border-bottom-left-radius: inherit;
+  }
+
+  .gradient-border-component {
+    position: relative;
+  }
+  .gradient-border-component::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; bottom: 0; width: 4px;
+    background: linear-gradient(to bottom, #3b82f6, #1d4ed8);
+    border-top-left-radius: inherit;
+    border-bottom-left-radius: inherit;
+  }
+}
