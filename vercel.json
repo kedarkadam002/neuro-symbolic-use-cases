@@ -1,5 +1,5 @@
 {
   "buildCommand": "vite build --config vite.config.ts",
-  "outputDirectory": "dist/public",
+  "outputDirectory": "dist",
   "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }
