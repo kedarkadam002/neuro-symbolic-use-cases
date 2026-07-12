@@ -117,7 +117,7 @@ export default function Home() {
               <Layers size={24} />
             </div>
             <h3 className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">Use Cases</h3>
-            <p className="text-muted-foreground mb-6 flex-1">12 operational applications, plus the top 5 high-leverage entry points for Firstsource.</p>
+            <p className="text-muted-foreground mb-6 flex-1">BFSI, Healthcare and Energy &amp; Utility — the highest-leverage decision points for Firstsource's US and UK clients.</p>
             <div className="flex items-center text-sm font-medium text-primary uppercase tracking-wide gap-2">
               Browse Catalog <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </div>
